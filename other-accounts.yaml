@@ -1,0 +1,26 @@
+config:
+  target: "https://ibankingstresstest.azurewebsites.net"
+  phases:
+    - duration: 1
+      arrivalRate: 1000
+  payload:
+    path: "other-accounts.csv"
+    fields:
+      - "refnumber"
+      - "otp"
+      - "otpsession"
+      - "token"
+    order: sequence
+  defaults:
+    headers:
+      Authorization: "Bearer {{ token }}"
+
+scenarios:
+  - name: "Transfer Other Account API Test"
+    flow:
+      - post:
+          url: "/api/transferotheraccount"
+          json:
+            refnumber: "{{ refnumber }}"
+            otp: "{{ otp }}"
+            otpsession: "{{ otpsession }}"
