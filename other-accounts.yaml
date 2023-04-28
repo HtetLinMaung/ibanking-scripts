@@ -2,7 +2,7 @@ config:
   target: "https://ibankingstresstest.azurewebsites.net"
   phases:
     - duration: 1
-      arrivalRate: 1000
+      arrivalRate: 1
   payload:
     path: "other-accounts.csv"
     fields:
